@@ -1,6 +1,7 @@
 package com.epam.izh.rd.online.service;
 
 import java.util.Arrays;
+import java.util.OptionalInt;
 
 public class SimpleMathService implements MathService {
 
@@ -24,16 +25,17 @@ public class SimpleMathService implements MathService {
      */
     @Override
     public int maxFrom(int value1, int value2) {
-        return -1;
+        return Math.max(value1,value2);
     }
 
     /**
      * Метод возвращает максимальное число из переданного массива.
      * Например для списка {-1, -3, 4, 8, 5, 22, -5} метод должен вернуть 22
+     * @return
      */
     @Override
     public int maxFrom(int[] values) {
-        return -1;
+        return Arrays.stream(values).max().getAsInt().;
     }
 
     /**
