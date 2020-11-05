@@ -1,9 +1,6 @@
 package com.epam.izh.rd.online.service;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import java.util.OptionalInt;
+import java.util.*;
 
 public class SimpleMathService implements MathService {
 
@@ -65,7 +62,11 @@ public class SimpleMathService implements MathService {
      */
     @Override
     public long calcFactorial(int initialVal) {
-        return -1L;
+        long result = 1;
+        for (int i = 1;i<=initialVal; i++){
+            result=result*i;
+        }
+        return result;
     }
 
     /**
@@ -80,7 +81,13 @@ public class SimpleMathService implements MathService {
      */
     @Override
     public long calcFibonacci(int number) {
-        return -1L;
+        List<Long> fibonacci = new ArrayList<>();
+        fibonacci.add(0L);
+        fibonacci.add(1L);
+        for (int i = 2; i <= number; ++i) {
+            fibonacci.add(fibonacci.get(i - 1) + fibonacci.get(i - 2));
+        }
+        return fibonacci.get(number);
     }
 
     /**
