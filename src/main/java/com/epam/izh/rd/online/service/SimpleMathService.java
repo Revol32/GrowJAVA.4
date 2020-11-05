@@ -15,7 +15,7 @@ public class SimpleMathService implements MathService {
      */
     @Override
     public int compare(int value1, int value2) {
-        return -2;
+        return Integer.compare(value1, value2);
     }
 
     /**
@@ -30,7 +30,7 @@ public class SimpleMathService implements MathService {
     /**
      * Метод возвращает максимальное число из переданного массива.
      * Например для списка {-1, -3, 4, 8, 5, 22, -5} метод должен вернуть 22
-     * @return
+     * return
      */
     @Override
     public int maxFrom(int[] values) {
@@ -52,7 +52,7 @@ public class SimpleMathService implements MathService {
      */
     @Override
     public int[] getEvenDigits(int[] values) {
-        return new int[]{};
+        return  Arrays.stream(values).filter(i->i%2==0).toArray();
     }
 
     /**
