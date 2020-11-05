@@ -1,5 +1,7 @@
 package com.epam.izh.rd.online.service;
 
+import java.util.*;
+
 public class SimpleMathService implements MathService {
 
     /**
@@ -13,7 +15,7 @@ public class SimpleMathService implements MathService {
      */
     @Override
     public int compare(int value1, int value2) {
-        return -2;
+        return Integer.compare(value1, value2);
     }
 
     /**
@@ -22,16 +24,17 @@ public class SimpleMathService implements MathService {
      */
     @Override
     public int maxFrom(int value1, int value2) {
-        return -1;
+        return Math.max(value1,value2);
     }
 
     /**
      * Метод возвращает максимальное число из переданного массива.
      * Например для списка {-1, -3, 4, 8, 5, 22, -5} метод должен вернуть 22
+     * return
      */
     @Override
     public int maxFrom(int[] values) {
-        return -1;
+        return Arrays.stream(values).max().getAsInt();
     }
 
     /**
@@ -40,7 +43,7 @@ public class SimpleMathService implements MathService {
      */
     @Override
     public int sum(int[] values) {
-        return -1;
+        return Arrays.stream(values).sum();
     }
 
     /**
@@ -49,7 +52,7 @@ public class SimpleMathService implements MathService {
      */
     @Override
     public int[] getEvenDigits(int[] values) {
-        return new int[]{};
+        return  Arrays.stream(values).filter(i->i%2==0).toArray();
     }
 
     /**
@@ -59,7 +62,11 @@ public class SimpleMathService implements MathService {
      */
     @Override
     public long calcFactorial(int initialVal) {
-        return -1L;
+        long result = 1;
+        for (int i = 1;i<=initialVal; i++){
+            result=result*i;
+        }
+        return result;
     }
 
     /**
@@ -74,7 +81,13 @@ public class SimpleMathService implements MathService {
      */
     @Override
     public long calcFibonacci(int number) {
-        return -1L;
+        List<Long> fibonacci = new ArrayList<>();
+        fibonacci.add(0L);
+        fibonacci.add(1L);
+        for (int i = 2; i <= number; ++i) {
+            fibonacci.add(fibonacci.get(i - 1) + fibonacci.get(i - 2));
+        }
+        return fibonacci.get(number);
     }
 
     /**
@@ -83,7 +96,8 @@ public class SimpleMathService implements MathService {
      */
     @Override
     public int[] sort(int[] values) {
-        return new int[]{};
+        Arrays.sort(values);
+        return values;
     }
 
     /**
@@ -94,7 +108,13 @@ public class SimpleMathService implements MathService {
      */
     @Override
     public boolean isPrimary(int number) {
-        return false;
+        int i;
+        for (i=2;i<number;i++){
+            if (number%i==0) {
+                return false;
+            }
+        }
+        return true;
     }
 
     /**
@@ -104,6 +124,11 @@ public class SimpleMathService implements MathService {
      */
     @Override
     public int[] reverseArray(int[] values) {
-        return new int[]{};
+        for (int i = 0; i < values.length / 2; i++) {
+            int temp = values[i];
+            values[i] = values[values.length - 1 - i];
+            values[values.length - 1 - i] = temp;
+        }
+        return values;
     }
 }
