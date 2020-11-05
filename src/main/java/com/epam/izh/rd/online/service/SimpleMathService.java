@@ -1,6 +1,8 @@
 package com.epam.izh.rd.online.service;
 
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 import java.util.OptionalInt;
 
 public class SimpleMathService implements MathService {
@@ -35,7 +37,7 @@ public class SimpleMathService implements MathService {
      */
     @Override
     public int maxFrom(int[] values) {
-        return Arrays.stream(values).max().getAsInt().;
+        return Arrays.stream(values).max().getAsInt();
     }
 
     /**
@@ -99,7 +101,13 @@ public class SimpleMathService implements MathService {
      */
     @Override
     public boolean isPrimary(int number) {
-        return false;
+        int i;
+        for (i=2;i<number;i++){
+            if (number%i==0) {
+                return false;
+            }
+        }
+        return true;
     }
 
     /**
@@ -109,6 +117,11 @@ public class SimpleMathService implements MathService {
      */
     @Override
     public int[] reverseArray(int[] values) {
-        return new int[]{};
+        for (int i = 0; i < values.length / 2; i++) {
+            int temp = values[i];
+            values[i] = values[values.length - 1 - i];
+            values[values.length - 1 - i] = temp;
+        }
+        return values;
     }
 }
